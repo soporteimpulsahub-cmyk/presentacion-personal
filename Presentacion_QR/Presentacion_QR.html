@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí | Andrés Felipe Vela</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #00e5a0;
+            --primary-dark: #00b982;
+            --background: #07111f;
+            --card: rgba(13, 27, 45, 0.94);
+            --card-light: rgba(25, 48, 72, 0.72);
+            --border: rgba(148, 163, 184, 0.22);
+            --text: #f8fafc;
+            --muted: #9aaac0;
+            --medical: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 45px 18px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: "Inter", sans-serif;
+            color: var(--text);
+            background:
+                linear-gradient(135deg, rgba(0, 229, 160, 0.07), transparent 35%),
+                linear-gradient(315deg, rgba(59, 130, 246, 0.08), transparent 40%),
+                var(--background);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* FONDO GEOMÉTRICO */
+        .background-shapes {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(0, 229, 160, 0.22);
+            transform: rotate(45deg);
+        }
+
+        .shape-one {
+            width: 420px;
+            height: 420px;
+            top: -230px;
+            left: -230px;
+            background: rgba(0, 229, 160, 0.035);
+        }
+
+        .shape-two {
+            width: 360px;
+            height: 360px;
+            right: -230px;
+            bottom: -100px;
+            border-radius: 38px;
+            background: rgba(0, 229, 160, 0.07);
+            box-shadow: 0 0 80px rgba(0, 229, 160, 0.07);
+        }
+
+        .shape-three {
+            width: 210px;
+            height: 210px;
+            right: 13%;
+            top: -130px;
+            border-color: rgba(59, 130, 246, 0.25);
+        }
+
+        .diagonal-line {
+            position: absolute;
+            width: 420px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.65;
+            transform: rotate(-45deg);
+        }
+
+        .line-one {
+            left: -160px;
+            top: 38%;
+        }
+
+        .line-two {
+            right: -130px;
+            top: 28%;
+        }
+
+        .dots {
+            position: absolute;
+            width: 115px;
+            height: 115px;
+            background-image: radial-gradient(var(--primary) 2px, transparent 2px);
+            background-size: 20px 20px;
+            opacity: 0.55;
+        }
+
+        .dots-left {
+            top: 12%;
+            left: 6%;
+        }
+
+        .dots-right {
+            right: 6%;
+            bottom: 13%;
+        }
+
+        /* TARJETA PRINCIPAL */
+        .main-card {
+            width: 100%;
+            max-width: 650px;
+            padding: 38px 30px 30px;
+            position: relative;
+            z-index: 1;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            box-shadow:
+                0 35px 100px rgba(0, 0, 0, 0.55),
+                0 0 70px rgba(0, 229, 160, 0.05);
+            backdrop-filter: blur(22px);
+            animation: cardEntrance 0.8s ease both;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .top-line {
+            width: 82px;
+            height: 5px;
+            margin: 0 auto 25px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            box-shadow: 0 0 20px rgba(0, 229, 160, 0.35);
+        }
+
+        /* ENCABEZADO */
+        .header {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(0, 229, 160, 0.24);
+            border-radius: 30px;
+            color: var(--primary);
+            background: rgba(0, 229, 160, 0.07);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 2.7rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ffffff, #7fffd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            max-width: 460px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 0.86rem;
+            line-height: 1.7;
+        }
+
+        /* FOTO */
+        .profile-container {
+            width: 142px;
+            height: 142px;
+            margin: 0 auto 22px;
+            position: relative;
+        }
+
+        .profile-container::before {
+            content: "";
+            position: absolute;
+            inset: -9px;
+            border: 1px dashed rgba(0, 229, 160, 0.65);
+            border-radius: 50%;
+            animation: rotate 18s linear infinite;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            background: #101b2b;
+            box-shadow: 0 0 35px rgba(0, 229, 160, 0.2);
+        }
+
+        .profile-name {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-name h2 {
+            font-size: clamp(1.05rem, 4vw, 1.35rem);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .profile-name span {
+            color: var(--primary);
+            font-size: 0.76rem;
+            font-weight: 700;
+        }
+
+        /* TÍTULO DE SECCIÓN */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--muted);
+            font-size: 0.73rem;
+            font-weight: 800;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .fields-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* TARJETAS DE INFORMACIÓN */
+        .certificate-link {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .data-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+            padding: 15px 16px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.025);
+            transition: transform 0.25s ease, border-color 0.25s ease,
+                        background 0.25s ease, box-shadow 0.25s ease;
+            animation: itemEntrance 0.55s ease both;
+        }
+
+        .data-item:nth-child(1) { animation-delay: 0.08s; }
+        .data-item:nth-child(2) { animation-delay: 0.12s; }
+        .data-item:nth-child(3) { animation-delay: 0.16s; }
+        .data-item:nth-child(4) { animation-delay: 0.20s; }
+        .data-item:nth-child(5) { animation-delay: 0.24s; }
+        .data-item:nth-child(6) { animation-delay: 0.28s; }
+        .data-item:nth-child(7) { animation-delay: 0.32s; }
+        .data-item:nth-child(8) { animation-delay: 0.36s; }
+        .data-item:nth-child(9) { animation-delay: 0.40s; }
+
+        @keyframes itemEntrance {
+            from {
+                opacity: 0;
+                transform: translateX(-14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .data-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 229, 160, 0.55);
+            background: rgba(0, 229, 160, 0.055);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .icon-wrapper {
+            flex: 0 0 44px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            color: var(--primary);
+            background: rgba(0, 229, 160, 0.10);
+            font-size: 1.05rem;
+            transition: 0.25s ease;
+        }
+
+        .data-item:hover .icon-wrapper {
+            color: #06130f;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .content-wrapper {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .content-wrapper label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--muted);
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .content-wrapper p {
+            color: #f1f5f9;
+            font-size: 0.87rem;
+            font-weight: 600;
+            line-height: 1.55;
+            overflow-wrap: anywhere;
+        }
+
+        .download-text {
+            display: block;
+            margin-top: 7px;
+            color: var(--primary);
+            font-size: 0.68rem;
+            font-weight: 800;
+        }
+
+        .download-icon {
+            flex: 0 0 auto;
+            color: var(--primary);
+            font-size: 0.9rem;
+            transition: transform 0.25s ease;
+        }
+
+        .certificate-link:hover .download-icon {
+            transform: translateY(4px);
+        }
+
+        /* ANTECEDENTES MÉDICOS */
+        .medical-highlight {
+            border-color: rgba(251, 191, 36, 0.28);
+            background: rgba(251, 191, 36, 0.035);
+        }
+
+        .medical-highlight .icon-wrapper {
+            color: var(--medical);
+            background: rgba(251, 191, 36, 0.10);
+        }
+
+        .medical-highlight .content-wrapper label {
+            color: var(--medical);
+        }
+
+        .medical-highlight:hover {
+            border-color: rgba(251, 191, 36, 0.5);
+            background: rgba(251, 191, 36, 0.06);
+        }
+
+        /* PIE PERSONAL */
+        .footer {
+            margin-top: 28px;
+            padding-top: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer p {
+            color: var(--muted);
+            font-size: 0.72rem;
+            line-height: 1.6;
+        }
+
+        .footer strong {
+            color: var(--primary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 520px) {
+            body {
+                padding: 22px 12px;
+            }
+
+            .main-card {
+                padding: 30px 16px 22px;
+                border-radius: 24px;
+            }
+
+            .profile-container {
+                width: 122px;
+                height: 122px;
+            }
+
+            .data-item {
+                padding: 13px;
+                gap: 11px;
+            }
+
+            .icon-wrapper {
+                flex-basis: 40px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .content-wrapper p {
+                font-size: 0.80rem;
+            }
+
+            .download-text {
+                font-size: 0.62rem;
+            }
+
+            .shape-one {
+                left: -330px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FONDO GEOMÉTRICO -->
+    <div class="background-shapes" aria-hidden="true">
+        <div class="shape shape-one"></div>
+        <div class="shape shape-two"></div>
+        <div class="shape shape-three"></div>
+        <div class="diagonal-line line-one"></div>
+        <div class="diagonal-line line-two"></div>
+        <div class="dots dots-left"></div>
+        <div class="dots dots-right"></div>
+    </div>
+
+    <div class="main-card">
+
+        <!-- ENCABEZADO -->
+
+        <div class="header">
+
+
+            <h1>Sobre Mí</h1>
+
+            <p>
+                Conoce un poco más sobre mi información personal,
+                estilo de vida y actividades.
+            </p>
+
+        </div>
+
+        <!-- FOTO -->
+
+        <div class="profile-container">
+
+            <img
+                src="img/Foto Perfil.jpg"
+                alt="Andrés Felipe Vela"
+                class="profile-pic"
+            >
+
+        </div>
+
+        <!-- NOMBRE -->
+
+        <div class="profile-name">
+
+            <h2>Andrés Felipe Vela Zuñiga</h2>
+
+            <span>
+                Mi Perfil Digital
+            </span>
+
+        </div>
+
+        <!-- INFORMACIÓN -->
+
+        <div class="section-title">
+            <i class="fa-solid fa-user"></i>
+            Información personal
+        </div>
+
+        <div class="fields-container">
+
+            <!-- NOMBRE -->
+
+            <div class="data-item">
+
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="content-wrapper">
+
+                    <label>Nombre completo</label>
+
+                    <p>Andrés Felipe Vela Zuñiga</p>
+
+                </div>
+
+            </div>
+
+            <!-- EDAD -->
+
+            <div class="data-item">
+
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+
+                <div class="content-wrapper">
+
+                    <label>Edad</label>
+
+                    <p>26 años</p>
+
+                </div>
+
+            </div>
+
+            <!-- BARRIO -->
+
+            <div class="data-item">
+
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div class="content-wrapper">
+
+                    <label>Residencia</label>
+
+                    <p>Timanco 2 Etapa</p>
+
+                </div>
+
+            </div>
+
+            <a href="Certificado Laboral Los Olivos EMCOOFUN.pdf"
+   download="Certificado_EMCOOFUN.pdf"
+   class="certificate-link">
+
+    <div class="data-item">
+
+        <div class="icon-wrapper">
+            <i class="fa-solid fa-briefcase"></i>
+        </div>
+
+        <div class="content-wrapper">
+
+            <label>Ocupación</label>
+
+            <p>Asistente Digital EMCOOFUN Los Olivos</p>
+
+            <small class="download-text">
+                <i class="fa-solid fa-download"></i>
+                Haz clic para descargar el certificado
+            </small>
+
+        </div>
+
+        <i class="fa-solid fa-arrow-down download-icon"></i>
+
+    </div>
+
+</a>
+
+            <!-- ACTIVIDAD FÍSICA -->
+
+            <div class="data-item">
+
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+
+                <div class="content-wrapper">
+
+                    <label>Nivel de actividad física</label>
+
+                    <p>Moderado</p>
+
+                </div>
+
+            </div>
+
+            <!-- DEPORTE -->
+
+            <div class="data-item">
+
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-dumbbell"></i>
+                </div>
+
+                <div class="content-wrapper">
+
+                    <label>Práctica deportiva</label>
+
+                    <p>Jugar futbol los fines de semana</p>
+
+                </div>
+
+            </div>
+
+            <!-- ANTECEDENTES MÉDICOS -->
+
+            <div class="data-item medical-highlight">
+
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-notes-medical"></i>
+                </div>
+
+                <div class="content-wrapper">
+
+                    <label>Antecedentes médicos</label>
+
+                    <p>Sin Registro</p>
+
+                </div>
+
+            </div>
+
+            <!-- 7. TIEMPO LIBRE -->
+
+<div class="data-item">
+
+    <div class="icon-wrapper">
+        <i class="fa-solid fa-clock"></i>
+    </div>
+
+    <div class="content-wrapper">
+
+        <label>Tiempo libre</label>
+
+        <p>
+           Me encanta programar, estudiar y estoy desarrollando
+        una aplicación que ayude a los emprendedores locales de Neiva.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- 8. EXPECTATIVA -->
+
+<div class="data-item">
+
+    <div class="icon-wrapper">
+        <i class="fa-solid fa-bullseye"></i>
+    </div>
+
+    <div class="content-wrapper">
+
+        <label>Expectativa</label>
+
+        <p>
+            Seguir creciendo personal y
+            profesionalmente, adquiriendo
+            nuevos conocimientos y experiencias.
+        </p>
+
+    </div>
+
+</div>
+
+        </div>
+
+        <!-- PIE -->
+
+        <div class="footer">
+
+            <p>
+                <i class="fa-solid fa-graduation-cap"></i>
+                Presentación académica · <strong>SENA</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
